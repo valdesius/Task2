@@ -20,7 +20,7 @@ public class Main {
 
         } else if(a == 0){
             System.out.println("Нулевое число");
-
+            System.out.println();
         }
 
 
