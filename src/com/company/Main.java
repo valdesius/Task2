@@ -24,7 +24,7 @@ public class Main {
         if (scanner.hasNextInt()) {
             num = scanner.nextInt();
         } else {
-            System.out.print("Неправильный формат записи ");
+            System.out.print("Неправильный формат записи  ");
             return readNumber();
         }
         return num;
