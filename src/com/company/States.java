@@ -1,0 +1,5 @@
+package com.company;
+
+public enum States {
+    NEGATIVE_ODD_SINGLE_DIGIT_NUMBER, POSITIVE_EVEN_THREE_DIGIT_NUMBER, ZERO_NUMBER, WRONG_NUMBER;
+}

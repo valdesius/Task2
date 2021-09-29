@@ -7,37 +7,57 @@ public class Main {
 
     public static void main(String[] args) {
         Locale.setDefault(Locale.ROOT);
-
         int number = readNumber();
+        States state = checkForState(number);
 
-        printInfo(number);
+        printStringsStates(state);
+
     }
 
     private static int readNumber() {
         Scanner scanner = new Scanner(System.in);
+        int number = 0;
 
-        System.out.println("Введите число из списка: ");
-        System.out.println("1. отрицательное нечетное однозначное число" + "\n" + "2. положительное четное трехзначное число " + "\n" + "3. Нулевое число");
-
-        int num;
-
-        if (scanner.hasNextInt()) {
-            num = scanner.nextInt();
-        } else {
-            System.out.print("Неправильный формат записи  ");
-            return readNumber();
+        try {
+            System.out.print("Enter a number suitable for the task condition: ");
+            number = scanner.nextInt();
+        } catch (Exception e) {
+            System.out.print("Invalid data");
+            System.exit(1);
         }
-        return num;
+
+        return number;
     }
 
-    private static void printInfo(int num) {
+    private static States checkForState(int num) {
         if ((num % 2) != 0 && num < 0 && num > -10 && num <= -1) {
-            System.out.println("отрицательное нечетное однозначное число ");
+            return (States.NEGATIVE_ODD_SINGLE_DIGIT_NUMBER);
+
         } else if ((num % 2) == 0 && num > 0 && num >= 100 && num < 1000) {
-            System.out.println("положительное четное трехзначное число ");
+            return (States.POSITIVE_EVEN_THREE_DIGIT_NUMBER);
+
         } else if (num == 0) {
-            System.out.println("Нулевое число");
+            return (States.ZERO_NUMBER);
+
+        } else {
+            return (States.WRONG_NUMBER);
         }
+
+    }
+
+    private static void printStringsStates(States state) {
+        switch (state) {
+            case NEGATIVE_ODD_SINGLE_DIGIT_NUMBER:
+                System.out.println("negative odd single digit number ");
+                break;
+            case POSITIVE_EVEN_THREE_DIGIT_NUMBER:
+                System.out.println("positive even three-digit number ");
+                break;
+            case ZERO_NUMBER:
+                System.out.println("zero number");
+                break;
+        }
+
     }
 
 }
